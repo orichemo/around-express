@@ -9,7 +9,7 @@ const cardsRouter = require('./routes/cards');
 app.use('/users', userRouter);
 app.use('/cards', cardsRouter);
 
-app.get('*', (req, res) => {
+app.use('*', (req, res) => {
   res.status(500).send({ message: 'An error has occurred on the server' });
 });
 
