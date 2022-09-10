@@ -23,7 +23,7 @@ module.exports.createUser = (req, res) => {
   const { name, about, avatar } = req.body;
   User.create({ name, about, avatar })
     .then((user) => res.status(200).send({ data: user }))
-    .catch((err) => res.status(500).send({ message: err }));
+    .catch((err) => errorMassage(err, res));
 };
 
 // the updateUserProfile request handler
@@ -34,7 +34,7 @@ module.exports.updateUserProfile = (req, res) => {
     runValidators: true, // the data will be validated before the update
   })
     .then((user) => res.status(200).send({ data: user }))
-    .catch((err) => res.status(500).send({ message: err }));
+    .catch((err) => errorMassage(err, res));
 };
 
 // the updateUserAvatar request handler
@@ -45,5 +45,5 @@ module.exports.updateUserAvatar = (req, res) => {
     runValidators: true,
   })
     .then((user) => res.status(200).send({ data: user }))
-    .catch((err) => res.status(500).send({ message: err }));
+    .catch((err) => errorMassage(err, res));
 };

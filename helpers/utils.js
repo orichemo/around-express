@@ -7,6 +7,8 @@ function errorFail() {
 function errorMassage(err, res) {
   if (err.name === 'CastError') {
     res.status(400).send({ message: 'Invalid card id' });
+  } else if (err.name === 'ValidationError') {
+    res.status(400).send({ message: err.message });
   } else if (err.statusCode === 404) {
     res.status(404).send({ message: err.message });
   } else {

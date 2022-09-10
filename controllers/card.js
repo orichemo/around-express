@@ -27,7 +27,7 @@ module.exports.createCard = (req, res) => {
     name, link, owner: ownerId
   })
     .then((card) => res.status(200).send({ data: card }))
-    .catch((err) => res.status(500).send({ message: err }));
+    .catch((err) => errorMassage(err, res));
 };
 
 // the likeCard request handler
